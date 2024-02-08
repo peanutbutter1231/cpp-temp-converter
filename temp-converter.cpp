@@ -21,5 +21,8 @@ void convertCelsiusToFahrenheit() {
 }
 
 int main() {
+    convertCelsiusToFahrenheit();
+    convertFahrenheitToCelsius();
+
     return 0;
 }
