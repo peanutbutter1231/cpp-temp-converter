@@ -1,42 +1,87 @@
 #include <iostream>
+#include <string>
 
-void convertFahrenheitToCelsius() {
+void convertFahrenheitToCelsius()
+{
     std::cout << "Enter the temperature in Fahrenheit: ";
     double fahrenheit;
     std::cin >> fahrenheit;
 
-    double celsius = (5.0 / 9.0)  * (fahrenheit - 32.0);
-    
+    double celsius = (5.0 / 9.0) * (fahrenheit - 32.0);
+
     std::cout << fahrenheit << " degrees Fahrenheit is " << celsius << " degrees Celsius." << std::endl;
 }
 
-void convertCelsiusToFahrenheit() {
+void convertCelsiusToFahrenheit()
+{
     std::cout << "Enter the temperature in Celsius: ";
     double celsius;
     std::cin >> celsius;
 
     double fahrenheit = (celsius * 9.0 / 5.0) + 32.0;
-    
+
     std::cout << celsius << " degrees Celsius is " << fahrenheit << " degrees Fahrenheit." << std::endl;
 }
 
-int main() {
-    char input;
+void convertKelvinToCelsius()
+{
+    std::cout << "Enter the temperature in Kelvin: ";
+    double kelvin;
+    std::cin >> kelvin;
 
-    std::cout << "Enter c if you want to convert from Fahrenheit to Celsius" << std::endl;
-    std::cout << "Enter f if you want to convert from Celsius to Fahrenheit" << std::endl;
+    double celsius = kelvin - 273.15;
 
-    std::cin >> input;
+    std::cout << kelvin << " degrees Celsius is " << celsius << " degrees Fahrenheit." << std::endl;
+}
 
-    if(input == 'c'){
-        convertCelsiusToFahrenheit();
+void convertKelvinToFahrenheit()
+{
+    std::cout << "Enter the temperature in Kelvin: ";
+    double kelvin;
+    std::cin >> kelvin;
+
+    double fahrenheit = ((kelvin - 273.15) * 1.8) + 32.0;
+
+    std::cout << kelvin << " degrees Celsius is " << fahrenheit << " degrees Fahrenheit." << std::endl;
+}
+
+int main()
+{
+    std::string input;
+
+    while (1)
+    {
+        std::cout << "Enter fc if you want to convert from Fahrenheit to Celsius" << std::endl;
+        std::cout << "Enter cf if you want to convert from Celsius to Fahrenheit" << std::endl;
+        std::cout << "Enter kf if you want to convert from Kelvin to Fahrenheit" << std::endl;
+        std::cout << "Enter kc if you want to convert from Kelvin to Celsius" << std::endl;
+
+        std::cin >> input;
+
+        if (input == "cf")
+        {
+            convertCelsiusToFahrenheit();
+            break;
+        }
+        else if (input == "fc")
+        {
+            convertFahrenheitToCelsius();
+            break;
+        }
+        else if (input == "kf")
+        {
+            convertKelvinToFahrenheit();
+            break;
+        }
+        else if (input == "kc")
+        {
+            convertKelvinToCelsius();
+            break;
+        }
+        else
+        {
+            std::cout << "Incorrect input. Please try again!" << std::endl;
+        }
     }
-    else if(input == 'f'){
-        convertFahrenheitToCelsius();
-    }
-    else{
-        std::cout << "Incorrect input. Please try again later" << std::endl;
-    }
-
     return 0;
 }
